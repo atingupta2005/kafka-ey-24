@@ -32,7 +32,6 @@ cd /usr/local/kafka
 
 /usr/local/kafka/bin/zookeeper-server-stop.sh /usr/local/kafka/config/zookeeper.properties
 sudo rm -rf /data
-ls /data/zookeeper
 sudo rm -rf /usr/local/kafka/logs/zookeeper.out
 sudo mkdir -p /data/zookeeper
 sudo chown -R atingupta2005:atingupta2005 /data/
@@ -42,7 +41,9 @@ cat /data/zookeeper/myid
 # edit the zookeeper settings
 cat /usr/local/kafka/config/zookeeper.properties
 sudo rm -rf /usr/local/kafka/config/zookeeper.properties
+rm -rf zookeeper.properties*
 wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/setup/zookeeper.properties
+ls -al zoo*
 cp zookeeper.properties /usr/local/kafka/config/zookeeper.properties
 
 cat /usr/local/kafka/config/zookeeper.properties
