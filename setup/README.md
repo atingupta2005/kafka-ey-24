@@ -13,7 +13,11 @@ az account show
 sh setup-0-ubuntu-vms.sh
 ```
 
-- Install Zookeeper Single
+- Install Zookeeper Single on each VM one by one
+```
+wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/setup/setup-1-zookeeper-vm1.sh
+sh setup-1-zookeeper-vm1.sh
+```
 
 - Setup Zookeeper Quorum
 

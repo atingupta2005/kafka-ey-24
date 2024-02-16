@@ -10,6 +10,7 @@ java -version
 # Disable RAM Swap - can set to 0 on certain Linux distro
 sudo sysctl vm.swappiness=1
 echo 'vm.swappiness=1' | sudo tee --append /etc/sysctl.conf
+cat /etc/sysctl.conf
 
 # Add hosts entries (mocking DNS) - put relevant IPs here
 echo "10.0.0.4 kafka1
@@ -22,7 +23,7 @@ echo "10.0.0.4 kafka1
 cat /etc/hosts
 
 # download Zookeeper and Kafka. Recommended is latest Kafka (0.10.2.1) and Scala 2.12
-wget https://downloads.apache.org/kafka/3.4.0/kafka_2.12-3.4.0.tgz
+wget https://archive.apache.org/dist/kafka/3.4.0/kafka_2.12-3.4.0.tgz
 tar -xvzf kafka_2.12-3.4.0.tgz
 rm kafka_2.12-3.4.0.tgz
 sudo mv kafka_2.12-3.4.0 /usr/local/kafka
@@ -60,7 +61,7 @@ sleep 10
 nc -vz localhost 2181
 echo "ruok" | nc localhost 2181 ; echo
 # check the logs
-tail -f /usr/local/kafka/logs/zookeeper.out
+tail /usr/local/kafka/logs/zookeeper.out
 
 # Stop zookeeper
 sudo service zookeeper stop
