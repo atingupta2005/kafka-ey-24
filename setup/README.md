@@ -15,11 +15,12 @@ sh setup-0-ubuntu-vms.sh
 
 - Install Zookeeper Single on each VM one by one
 ```
-rm setup-1-zookeeper-vm1.sh
+cd
+rm -rf ~/setup-1-zookeeper-vm1.sh
 wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/setup/setup-1-zookeeper-vm1.sh
 ls
-chmod a+x setup-1-zookeeper-vm1.sh
-. ./setup-1-zookeeper-vm1.sh
+chmod a+x ~/setup-1-zookeeper-vm1.sh
+~/setup-1-zookeeper-vm1.sh
 ```
 
 - Setup Zookeeper Quorum

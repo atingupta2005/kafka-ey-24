@@ -3,7 +3,7 @@
 
 sudo service zookeeper stop
 sudo service kafka stop
-/usr/local/kafka/bin/zookeeper-server-stop.sh -daemon /usr/local/kafka/config/zookeeper.properties
+/usr/local/kafka/bin/zookeeper-server-stop.sh /usr/local/kafka/config/zookeeper.properties
 sudo rm -rf /data
 ls /data/zookeeper
 sudo rm -rf /usr/local/kafka/logs/zookeeper.out
