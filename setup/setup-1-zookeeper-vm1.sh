@@ -26,10 +26,11 @@ cat /etc/hosts
 wget https://archive.apache.org/dist/kafka/3.4.0/kafka_2.12-3.4.0.tgz
 tar -xvzf kafka_2.12-3.4.0.tgz
 rm kafka_2.12-3.4.0.tgz
+sudo rm -rf /usr/local/kafka
 sudo mv kafka_2.12-3.4.0 /usr/local/kafka
 cd /usr/local/kafka
 # Zookeeper quickstart
-cat config/zookeeper.properties
+cat /usr/local/kafka/config/zookeeper.properties
 /usr/local/kafka/bin/zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties
 # binding to port 2181 -> you're good. Ctrl+C to exit
 
@@ -46,6 +47,7 @@ echo "ruok" | nc localhost 2181 ; echo
 
 # Install Zookeeper boot scripts
 sudo rm -rf /etc/init.d/zookeeper
+wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/setup/zookeeper
 sudo cp zookeeper /etc/init.d/zookeeper
 sudo chmod +x /etc/init.d/zookeeper
 sudo chown root:root /etc/init.d/zookeeper
