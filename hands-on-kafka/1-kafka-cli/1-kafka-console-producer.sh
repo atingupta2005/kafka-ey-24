@@ -8,21 +8,21 @@ cd kafka-ey-24/hands-on-kafka/1-kafka-cli
 
 # producing
 /usr/local/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic 
-> Hello World
->My name is Atin
->I love Kafka
->^C  (<- Ctrl + C is used to exit the producer)
+ Hello World
+My name is Atin
+I love Kafka
+^C  (<- Ctrl + C is used to exit the producer)
 
 
 # producing with properties
 /usr/local/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic --producer-property acks=all
-> some message that is acked
-> just for fun
+ some message that is acked
+ just for fun
 
 
 # producing to a non existing topic
 /usr/local/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic new_topic
-> hello world!
+ hello world!
 
 # our new topic only has 1 partition
 /usr/local/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
@@ -45,6 +45,6 @@ hello again!
 
 # produce with keys
 /usr/local/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic --property parse.key=true --property key.separator=:
->name:Atin
+name:Atin
 
 
