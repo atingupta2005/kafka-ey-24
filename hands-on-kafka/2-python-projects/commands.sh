@@ -11,6 +11,7 @@ sudo apt install httpie  -y
 
 USER_SUFFIX=$(echo "$USER" | cut -c 2-5)
 echo $USER_SUFFIX
+
 ##----------------------------------------------------------------##
 # Create Topic
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/1-python-kafka-admin-api-simple
