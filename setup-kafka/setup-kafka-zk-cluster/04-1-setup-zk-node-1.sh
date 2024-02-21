@@ -1,3 +1,4 @@
+cd
 echo "1" > /data/zookeeper/myid
 cat /data/zookeeper/myid
 

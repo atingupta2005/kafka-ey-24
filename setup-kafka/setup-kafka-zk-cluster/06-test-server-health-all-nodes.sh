@@ -1,12 +1,11 @@
 # Test health of the nodes
+nc -vz zookeeper1 2181
+nc -vz zookeeper2 2181
+nc -vz zookeeper3 2181
 
 nc -vz kafka1 9092
 nc -vz kafka2 9092
 nc -vz kafka3 9092
-
-nc -vz zookeeper1 2181
-nc -vz zookeeper2 2181
-nc -vz zookeeper3 2181
 
 tail -f /usr/local/kafka/logs/zookeeper.out
 # look at the server logs

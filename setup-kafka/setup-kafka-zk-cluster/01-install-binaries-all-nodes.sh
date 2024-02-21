@@ -1,5 +1,5 @@
 # Install Binaries on all VMS
-- Note: Below commands need to run on all the VMs
+#- Note: Below commands need to run on all the VMs
 
 sudo apt-get update
 sudo apt-get -y install wget ca-certificates zip net-tools vim nano tar netcat tree
@@ -9,11 +9,9 @@ sudo apt-get -y install openjdk-11-jdk
 java -version
 
 # download Zookeeper and Kafka
-ls /usr/local/kafka
 cd
 wget https://downloads.apache.org/kafka/3.6.1/kafka_2.13-3.6.1.tgz
 tar -xvzf kafka_2.13-3.6.1.tgz
 rm kafka_2.13-3.6.1.tgz
 sudo rm -rf /usr/local/kafka
 sudo mv kafka_2.13-3.6.1 /usr/local/kafka
-cd /usr/local/kafka

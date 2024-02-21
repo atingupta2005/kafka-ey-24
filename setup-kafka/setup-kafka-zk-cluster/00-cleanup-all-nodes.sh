@@ -4,7 +4,9 @@
 #- Need to run on all the VMs
 
 /usr/local/kafka/bin/kafka-server-stop.sh /usr/local/kafka/config/server.properties
+sleep 5
 /usr/local/kafka/bin/zookeeper-server-stop.sh /usr/local/kafka/config/zookeeper.properties
+sleep 5
 
 sudo rm -rf /data
 sudo rm -rf /usr/local/kafka

@@ -1,5 +1,5 @@
 # Install Binaries on all VMS
-- Note: Below commands need to run on all the VMs
+#- Note: Below commands need to run on all the VMs
 
 # Add hosts entries (mocking DNS) - put relevant IPs here
 cat /etc/hosts

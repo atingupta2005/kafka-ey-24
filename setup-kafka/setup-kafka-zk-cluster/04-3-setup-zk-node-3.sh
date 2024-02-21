@@ -1,8 +1,8 @@
+cd
 echo "3" > /data/zookeeper/myid
 cat /data/zookeeper/myid
 
 # edit the zookeeper settings
-cat /usr/local/kafka/config/zookeeper.properties
 sudo rm -rf /usr/local/kafka/config/zookeeper.properties
 rm -rf zookeeper.properties*
 wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/setup-kafka/setup-kafka-zk-cluster/zookeeper.properties
