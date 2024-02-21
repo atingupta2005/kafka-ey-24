@@ -3,7 +3,9 @@ sudo chown -R atingupta2005:atingupta2005 /data/kafka
 
 cat /usr/local/kafka/config/server.properties
 rm /usr/local/kafka/config/server.properties
+rm -rf server-*.properties*
 wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/setup-kafka/setup-kafka-zk-cluster/server-2.properties
+
 
 cp server-2.properties /usr/local/kafka/config/server.properties
 
