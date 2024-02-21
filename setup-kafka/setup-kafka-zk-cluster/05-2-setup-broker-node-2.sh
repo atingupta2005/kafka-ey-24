@@ -11,6 +11,7 @@ cp server-2.properties /usr/local/kafka/config/server.properties
 
 cat /usr/local/kafka/config/server.properties
 
+/usr/local/kafka/bin/kafka-server-start.sh  /usr/local/kafka/config/server.properties
 /usr/local/kafka/bin/kafka-server-start.sh  -daemon /usr/local/kafka/config/server.properties
 
 sleep 10
