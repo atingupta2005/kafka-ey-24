@@ -9,7 +9,7 @@ nc -vz kafka3 9092
 
 tail -f /usr/local/kafka/logs/zookeeper.out
 # look at the server logs
-tail -f /usr/local/kafka/logs/server.log
+tail -f -n 100 /usr/local/kafka/logs/server.log
 
 
 # create a topic

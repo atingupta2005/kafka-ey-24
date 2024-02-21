@@ -1,4 +1,6 @@
 cd
+sudo mkdir /data
+sudo chown -R atingupta2005:atingupta2005 /data
 echo "2" > /data/zookeeper/myid
 cat /data/zookeeper/myid
 
