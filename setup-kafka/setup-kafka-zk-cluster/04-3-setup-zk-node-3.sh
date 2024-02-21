@@ -15,12 +15,12 @@ cat /usr/local/kafka/config/zookeeper.properties
 
 /usr/local/kafka/bin/zookeeper-server-start.sh -daemon /usr/local/kafka/config/zookeeper.properties
 
-sleep 10
+sleep 5
 
 nc -vz zookeeper1 2181
 nc -vz zookeeper2 2181
 nc -vz zookeeper3 2181
 
-sleep 10
+sleep 5
 
 tail /usr/local/kafka/logs/zookeeper.out
