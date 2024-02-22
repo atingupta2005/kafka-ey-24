@@ -10,8 +10,7 @@ java -version
 
 # download Zookeeper and Kafka
 cd
-wget https://downloads.apache.org/kafka/3.6.1/kafka_2.13-3.6.1.tgz
+wget -nc https://downloads.apache.org/kafka/3.6.1/kafka_2.13-3.6.1.tgz
 tar -xvzf kafka_2.13-3.6.1.tgz
-rm kafka_2.13-3.6.1.tgz
 sudo rm -rf /usr/local/kafka
 sudo mv kafka_2.13-3.6.1 /usr/local/kafka

@@ -21,6 +21,6 @@ nc -vz zookeeper1 2181
 nc -vz zookeeper2 2181
 nc -vz zookeeper3 2181
 
-sleep 5
+sleep 2
 
 tail /usr/local/kafka/logs/zookeeper.out

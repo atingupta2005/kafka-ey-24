@@ -32,6 +32,8 @@ sudo mv prometheus /usr/local/bin/
 sudo chown prometheus:prometheus /usr/local/bin/prometheus
 sudo cat /etc/prometheus/prometheus.yml
 
+rm prometheus.service*
+wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/setup-kafka/setup-monitoring/prometheus.service
 sudo cp prometheus.service /etc/systemd/system/prometheus.service
 
 sudo systemctl daemon-reload
@@ -44,38 +46,59 @@ sudo systemctl status prometheus
 
 curl http://localhost:9090
 
-sudo apt install -y apt-transport-https
+sudo apt install -y apt-transport-https -y
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
 
 sudo apt-get update
-sudo apt-get install grafana
+sudo apt-get install grafana -y
+sudo grafana-server -v
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server
+sudo systemctl status grafana-server
 
-sudo systemctl enable --now grafana-server
-
-curl http://localhost
+curl http://localhost:3000
 
 sudo systemctl stop grafana-server
 sudo grafana-cli admin reset-admin-password grafana@123
 sudo systemctl start grafana-server
 
+curl http://localhost:3000
 
 ## Kafka configuration
-echo "export JMX_PORT=9998" >> zookeeper-server-start.sh
-echo "export JMX_PROMETHEUS_PORT=7072" >> zookeeper-server-start.sh
+sudo nano /usr/local/kafka/bin/zookeeper-server-start.sh
+export JMX_PORT=9998
+export JMX_PROMETHEUS_PORT=7072
 
-echo "export JMX_PORT=9999" >> kafka-server-start.sh
-echo "export JMX_PROMETHEUS_PORT=7071" >> kafka-server-start.sh
+sudo nano /usr/local/kafka/bin/kafka-server-start.sh
+export JMX_PORT=9999
+export JMX_PROMETHEUS_PORT=7071
 
-nano kafka-run-class.sh
+sudo nano /usr/local/kafka/bin/kafka-run-class.sh
 # JMX settings
-if [ -z “$KAFKA_JMX_OPTS” ]; then
-KAFKA_JMX_OPTS=”-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=localhost -Djava.net.preferIPv4Stack=true -javaagent:/home/prometheus/jmx_prometheus_javaagent-0.17.2.jar=$JMX_PROMETHEUS_PORT:/home/prometheus/kafka-2_0_0.yml”
+if [ -z "$KAFKA_JMX_OPTS" ]; then
+ KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=kafka1 -Djava.net.preferIPv4Stack=true -javaagent:/home/prometheus/jmx_prometheus_javaagent-0.17.2.jar=$JMX_PROMETHEUS_PORT:/home/prometheus/kafka-2_0_0.yml"
 fi
 
-Start your zookeeper and kafa servers. If successfully up, you should be able to see jmx metrics on below links.
-http://localhost:7071/metrics [kafka jmx metrics]
-http://localhost:7072/metrics [zookeeper jmx metrics]
+Restart your zookeeper and kafa servers. If successfully up, you should be able to see jmx metrics on below links.
+/usr/local/kafka/bin/kafka-server-stop.sh /usr/local/kafka/config/server.properties
+sleep 1
+/usr/local/kafka/bin/zookeeper-server-stop.sh /usr/local/kafka/config/zookeeper.properties
+sleep 1
+
+/usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties
+sleep 1
+/usr/local/kafka/bin/zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties
+sleep 1
+
+
+tail -n 100 -f /usr/local/kafka/logs/zookeeper.out
+# look at the server logs
+tail -f -n 100 /usr/local/kafka/logs/server.log
+
+
+curl http://kafka1:7071/metrics #[kafka jmx metrics]
+curl http://kafka1:7072/metrics #[zookeeper jmx metrics]
 
 
 nano /etc/prometheus/prometheus.yml
