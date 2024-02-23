@@ -12,13 +12,13 @@ chmod +x ~/.docker/cli-plugins/docker-compose
 docker compose version
 
 
-git clone https://github.com/conduktor/kafka-stack-docker-compose
+git clone https://github.com/atingupta2005/kafka-stack-docker-compose
 
 
 cd kafka-stack-docker-compose
 
 
-docker compose -f full-stack.yml up -d
+docker compose -f full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml up -d
 
 curl localhost:8080
 
