@@ -6,6 +6,16 @@ cat /usr/local/kafka/config/connect-standalone.properties
 ```
 
 ```
+/usr/local/kafka/config/connect-standalone.properties
+```
+
+```
+key.converter=org.apache.kafka.connect.storage.StringConverter
+value.converter=org.apache.kafka.connect.storage.StringConverter
+```
+
+
+```
 /usr/local/kafka/bin/kafka-topics.sh --bootstrap-server kafka1:19092 --create --topic my_file_connect_topic_1 --replication-factor 3 --partitions 3
 ```
 
@@ -24,8 +34,13 @@ cat /usr/local/kafka/config/FILES_connect-synk.properties
 /usr/local/kafka/bin/connect-standalone.sh /usr/local/kafka/config/connect-standalone.properties /usr/local/kafka/config/FILES_connect-synk.properties
 ```
 
-## To unset the Public Key in Snowflake:
+
+## Publish data to the topic
 ```
-alter user atingupta2005 unset rsa_public_key;
+/usr/local/kafka/bin/kafka-console-producer.sh --broker-list kafka1:19092 --topic my_file_connect_topic_1
 ```
 
+## Check the text file
+```
+tail -ff  /tmp/my-file-sink.txt
+```
