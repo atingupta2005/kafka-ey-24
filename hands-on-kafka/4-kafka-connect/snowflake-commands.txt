@@ -15,10 +15,10 @@ CREATE ROLE kafka_connector_role_1;
 GRANT USAGE ON DATABASE kafka_db TO ROLE kafka_connector_role_1;
 
 -- Grant privileges on the schema.
-GRANT USAGE ON SCHEMA kafka_schema TO ROLE kafka_connector_role_1;
-GRANT CREATE TABLE ON SCHEMA kafka_schema TO ROLE kafka_connector_role_1;
-GRANT CREATE STAGE ON SCHEMA kafka_schema TO ROLE kafka_connector_role_1;
-GRANT CREATE PIPE ON SCHEMA kafka_schema TO ROLE kafka_connector_role_1;
+GRANT USAGE ON SCHEMA kafka_db.kafka_schema TO ROLE kafka_connector_role_1;
+GRANT CREATE TABLE ON SCHEMA kafka_db.kafka_schema TO ROLE kafka_connector_role_1;
+GRANT CREATE STAGE ON SCHEMA kafka_db.kafka_schema TO ROLE kafka_connector_role_1;
+GRANT CREATE PIPE ON SCHEMA kafka_db.kafka_schema TO ROLE kafka_connector_role_1;
 
 
 CREATE USER kafka_connector_user_1 PASSWORD='KafkAconn@74589' DEFAULT_ROLE = kafka_connector_role_1 DEFAULT_SECONDARY_ROLES = ('ALL');
