@@ -6,7 +6,7 @@ drop ROLE kafka_connector_role_1;
 drop user kafka_connector_user_1;
 
 create database kafka_db;
-create schema kafka_schema;
+create schema kafka_db.kafka_schema;
 
 -- Create a Snowflake role with the privileges to work with the connector.
 CREATE ROLE kafka_connector_role_1;
