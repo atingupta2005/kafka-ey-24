@@ -13,19 +13,23 @@ tail -f -n 100 /usr/local/kafka/logs/server.log
 
 
 # create a topic
-/usr/local/kafka/bin/kafka-topics.sh --bootstrap-server kafka1:9092 --create --topic first_topic --replication-factor 1 --partitions 3
+/usr/local/kafka/bin/kafka-topics.sh --bootstrap-server kafka1:19092 --create --topic first_topic --replication-factor 1 --partitions 3
+/usr/local/kafka/bin/kafka-topics.sh --bootstrap-server 172.177.41.201:9092 --create --topic first_topic --replication-factor 1 --partitions 3
 
 # produce data to the topic
-/usr/local/kafka/bin/kafka-console-producer.sh --broker-list kafka1:9092 --topic first_topic
+/usr/local/kafka/bin/kafka-console-producer.sh --broker-list kafka1:19092 --topic first_topic
+/usr/local/kafka/bin/kafka-console-producer.sh --broker-list 172.177.41.201:9092 --topic first_topic
 hi
 hello
 # Press CTRL+C to exit
 
 # read that data
-/usr/local/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka1:9092 --topic first_topic --from-beginning
+/usr/local/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka1:19092 --topic first_topic --from-beginning
+/usr/local/kafka/bin/kafka-console-consumer.sh --bootstrap-server 172.177.41.201:9092 --topic first_topic --from-beginning
 
 # Press CTRL+C to exit
 
 # list kafka topics
 /usr/local/kafka/bin/kafka-topics.sh --bootstrap-server kafka1:9092 --list
+/usr/local/kafka/bin/kafka-topics.sh --bootstrap-server 172.177.41.201:9092 --list
 
