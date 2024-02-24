@@ -40,9 +40,12 @@ cat rsa_key.pem.txt
 - Refer: snowflake-commands.txt
 
 
-## Create a SF_connect.properties file with below properties in config folder --
+## Create a SF_connect.properties file with below properties in config folder
+```
+cd
+wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/hands-on-kafka/4-kafka-connect/SF_connect.properties
 cp SF_connect.properties /usr/local/kafka/config/
-
+```
 
 ## Start the Kafka Connector:
 ```
