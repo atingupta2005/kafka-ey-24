@@ -2,34 +2,26 @@ echo "Waiting for Kafka to come online..."
 
 cub kafka-ready -b kafka:9092 1 20
 
-# create the game events topic
+# create the pulse-events topic
 kafka-topics \
   --bootstrap-server kafka:9092 \
-  --topic score-events \
+  --topic pulse-events \
   --replication-factor 1 \
   --partitions 4 \
   --create
 
-# create the players topic
+# create the body-temp-events topic
 kafka-topics \
   --bootstrap-server kafka:9092 \
-  --topic players \
+  --topic body-temp-events \
   --replication-factor 1 \
   --partitions 4 \
   --create
 
-# create the products topic
+# create the combined-vitals topic
 kafka-topics \
   --bootstrap-server kafka:9092 \
-  --topic products \
-  --replication-factor 1 \
-  --partitions 4 \
-  --create
-
-# create the high-scores topic
-kafka-topics \
-  --bootstrap-server kafka:9092 \
-  --topic high-scores \
+  --topic alerts \
   --replication-factor 1 \
   --partitions 4 \
   --create

@@ -1,18 +1,13 @@
 docker-compose exec kafka bash -c "
   kafka-console-producer \
   --bootstrap-server kafka:9092 \
-  --topic players \
+  --topic pulse-events \
   --property 'parse.key=true' \
-  --property 'key.separator=|' < players.json"
+  --property 'key.separator=|' < pulse-events.json"
 
 docker-compose exec kafka bash -c "
   kafka-console-producer \
   --bootstrap-server kafka:9092 \
-  --topic products \
+  --topic body-temp-events \
   --property 'parse.key=true' \
-  --property 'key.separator=|' < products.json"
-
-docker-compose exec kafka bash -c "
-  kafka-console-producer \
-  --bootstrap-server kafka:9092 \
-  --topic score-events < score-events.json"
+  --property 'key.separator=|' < body-temp-events.json"

@@ -1,78 +1,60 @@
 # Running Locally
 ```sh
-docker-compose up -d
+docker-compose up
 ```
 
-Now, log into the broker, since this is where we will be running our commands.
+Now, follow either the **DSL example** or **Processor API example** instructions below, depending on which version of the demo you want to run.
+
+## DSL example
+
+You can run the high-level DSL example with the following command:
+```sh
+./gradlew runDSL --info
+```
+
+Once the dependencies are downloaded and the application is running (this may take a few minutes the first time you run the app, but will be much faster during subsequent runs), following the instructions under the __Producing Test Data__ section at the bottom of this README.
+
+## Processor API example
+
+You can run the low-level Processor API example with the following command:
+```sh
+./gradlew runProcessorAPI --info
+```
+
+Once the dependencies are downloaded and the application is running (this may take a few minutes the first time you run the app, but will be much faster during subsequent runs), following the instructions under the __Producing Test Data__ section below.
+
+# Producing Test Data
+Once the Kafka Streams application is running (either the DSL or Processor API version), open a new shell tab and produce some data to the source topic (`users`).
+
 ```sh
 docker-compose exec kafka bash
-```
 
-## Create a topic
-Once you're logged into the broker, run the following command to create a topic called `users`:
-
-```sh
-kafka-topics \
-    --bootstrap-server localhost:9092 \
-    --create \
-    --topic users \
-    --partitions 4 \
-    --replication-factor 1
-```
-
-## Describe a topic
-Once you've created the `users` topic, you can describe it using the following command:
-
-```sh
-kafka-topics \
-    --bootstrap-server localhost:9092 \
-    --describe \
-    --topic users
-```
-
-## Produce data to a topic
-The following command will allow you to produce data to the `users` topic that we created earlier. Run the following to be dropped into a prompt:
-
-```sh
 kafka-console-producer \
     --bootstrap-server localhost:9092 \
-    --property key.separator=, \
-    --property parse.key=true \
     --topic users
 ```
 
-Once you are in the prompt, produce a few records. Keys and values are separated by `,`, and you'll need to hit `<Enter>` on your keyboard after each row.
+This will drop you in a prompt:
 
 ```sh
-1,mitch
-2,elyse
-3,isabelle
-4,sammy
+>
 ```
 
-When you are finished, press `Control-C` on your keyboard to exit the prompt.
-
-## Consuming data from a topic
-Run the following command to consume the data we just produced to the `users` topic in the section above.
+Now, type a few words, followed by `<ENTER>`.
 
 ```sh
-kafka-console-consumer \
-    --bootstrap-server localhost:9092 \
-    --topic users \
-    --from-beginning
+>world
+>izzy
 ```
 
-You should see the following output:
+You will see the following output if running the DSL example:
 ```sh
-mitch
-isabelle
-sammy
-elyse
+(DSL) Hello, world
+(DSL) Hello, izzy
 ```
 
-## Cleanup
-Once you are done, log out of the broker by typing `exit` and run the following command to tear down the local Kafka cluster:
-
+or slightly different output if running the Processor API example:
 ```sh
-docker-compose down
+(Processor API) Hello, world
+(Processor API) Hello, izzy
 ```

@@ -1,60 +1,43 @@
 # Running Locally
 ```sh
-docker-compose up
+docker-compose up -d
 ```
 
-Now, follow either the **DSL example** or **Processor API example** instructions below, depending on which version of the demo you want to run.
+## dummy translation / sentiment analysis
+First, if you want to see this running without setting up a service account for the translation and sentiment analysis service, you can run the following command:
 
-## DSL example
-
-You can run the high-level DSL example with the following command:
 ```sh
-./gradlew runDSL --info
+./gradlew run --info
 ```
-
-Once the dependencies are downloaded and the application is running (this may take a few minutes the first time you run the app, but will be much faster during subsequent runs), following the instructions under the __Producing Test Data__ section at the bottom of this README.
-
-## Processor API example
-
-You can run the low-level Processor API example with the following command:
-```sh
-./gradlew runProcessorAPI --info
-```
-
-Once the dependencies are downloaded and the application is running (this may take a few minutes the first time you run the app, but will be much faster during subsequent runs), following the instructions under the __Producing Test Data__ section below.
 
 # Producing Test Data
-Once the Kafka Streams application is running (either the DSL or Processor API version), open a new shell tab and produce some data to the source topic (`users`).
+We have a couple of test records saved to the `data/test.json` file, which is mounted in the `kafka` container for convenience. Feel free to modify the data in this file as you see fit. Then, run the following command to produce the test data to the source topic (`tweets`).
 
 ```sh
 docker-compose exec kafka bash
 
 kafka-console-producer \
-    --bootstrap-server localhost:9092 \
-    --topic users
+  --bootstrap-server kafka:9092 \
+  --topic tweets < test.json
 ```
 
-This will drop you in a prompt:
-
+Then, in another tab, run the following command to consume data from the sink topic (`crypto-sentiment`).
 ```sh
->
+docker-compose exec schema-registry bash
+
+$ kafka-avro-console-consumer \
+ --bootstrap-server kafka:9092 \
+ --topic crypto-sentiment \
+ --from-beginning
+ ```
+ 
+ You should see records similar to the following appear in the sink topic.
+ ```json
+ {"created_at":1577933872630,"entity":"bitcoin","text":"Bitcoin has a lot of promise. I'm not too sure about #ethereum","sentiment_score":0.3444212495322003,"sentiment_magnitude":0.9464683988787772,"salience":0.9316858469669134}
+{"created_at":1577933872630,"entity":"ethereum","text":"Bitcoin has a lot of promise. I'm not too sure about #ethereum","sentiment_score":0.1301464314096875,"sentiment_magnitude":0.8274198304784903,"salience":0.9112319163372604}
 ```
 
-Now, type a few words, followed by `<ENTER>`.
-
-```sh
->world
->izzy
+## Cleanup
 ```
-
-You will see the following output if running the DSL example:
-```sh
-(DSL) Hello, world
-(DSL) Hello, izzy
-```
-
-or slightly different output if running the Processor API example:
-```sh
-(Processor API) Hello, world
-(Processor API) Hello, izzy
+docker-compose down
 ```
