@@ -43,8 +43,11 @@ cat rsa_key.pem.txt
 ## Create a SF_connect.properties file with below properties in config folder
 ```
 cd
-wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/hands-on-kafka/4-kafka-connect/SF_connect.properties
+rm SF_connect.properties
+wget --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/hands-on-kafka/4-kafka-connect/SF_connect.properties
+nano SF_connect.properties
 cp SF_connect.properties /usr/local/kafka/config/
+cat /usr/local/kafka/config/SF_connect.properties
 ```
 
 ## Start the Kafka Connector:

@@ -1,0 +1,31 @@
+## Update the plugin.path in kafka connect-standalone properties.
+```
+cat /usr/local/kafka/config/connect-standalone.properties
+echo "plugin.path=/usr/local/kafka/libs" >> /usr/local/kafka/config/connect-standalone.properties
+cat /usr/local/kafka/config/connect-standalone.properties
+```
+
+```
+/usr/local/kafka/bin/kafka-topics.sh --bootstrap-server kafka1:19092 --create --topic my_file_connect_topic_1 --replication-factor 3 --partitions 3
+```
+
+## Create a FILES_connect-synk.properties file with below properties in config folder
+```
+cd
+rm FILES_connect-synk.properties
+wget --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/hands-on-kafka/5-kafka-connect-files/FILES_connect-synk.properties
+nano FILES_connect-synk.properties
+cp FILES_connect-synk.properties /usr/local/kafka/config/
+cat /usr/local/kafka/config/FILES_connect-synk.properties
+```
+
+## Start the Kafka Connector:
+```
+/usr/local/kafka/bin/connect-standalone.sh /usr/local/kafka/config/connect-standalone.properties /usr/local/kafka/config/FILES_connect-synk.properties
+```
+
+## To unset the Public Key in Snowflake:
+```
+alter user atingupta2005 unset rsa_public_key;
+```
+
