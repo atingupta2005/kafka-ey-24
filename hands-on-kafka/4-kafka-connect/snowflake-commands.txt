@@ -1,0 +1,36 @@
+SHOW ORGANIZATION ACCOUNTS;
+
+drop schema kafka_db.kafka_schema;
+drop database kafka_db;
+drop ROLE kafka_connector_role_1;
+drop user kafka_connector_user_1;
+
+create schema kafka_schema;
+create database kafka_db;
+
+-- Create a Snowflake role with the privileges to work with the connector.
+CREATE ROLE kafka_connector_role_1;
+
+-- Grant privileges on the database.
+GRANT USAGE ON DATABASE kafka_db TO ROLE kafka_connector_role_1;
+
+-- Grant privileges on the schema.
+GRANT USAGE ON SCHEMA kafka_schema TO ROLE kafka_connector_role_1;
+GRANT CREATE TABLE ON SCHEMA kafka_schema TO ROLE kafka_connector_role_1;
+GRANT CREATE STAGE ON SCHEMA kafka_schema TO ROLE kafka_connector_role_1;
+GRANT CREATE PIPE ON SCHEMA kafka_schema TO ROLE kafka_connector_role_1;
+
+
+CREATE USER kafka_connector_user_1 PASSWORD='KafkAconn@74589' DEFAULT_ROLE = kafka_connector_role_1 DEFAULT_SECONDARY_ROLES = ('ALL');
+
+-- Grant the custom role to an existing user.
+GRANT ROLE kafka_connector_role_1 TO USER kafka_connector_user_1;
+
+-- Set the custom role as the default role for the user.
+-- If you encounter an 'Insufficient privileges' error, verify the role that has the OWNERSHIP privilege on the user.
+ALTER USER kafka_connector_user_1 SET DEFAULT_ROLE = kafka_connector_role_1;
+
+alter user kafka_connector_user_1 unset rsa_public_key;
+alter user kafka_connector_user_1 set rsa_public_key='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsv50DZUX4ydwAzfkZjUCGOmtKkHbuEARMVOWjoaEEkMPdFqp9eKoyGGid3w1N6olD7O1ySX0zlze+cyeV3Pe6IQJrgjknSP2i0laN2D/C66oI1gpV8YKEPg17vBPkD576rxJW4PSWk34XeclqlerNa+vzd4D++atG7FpFCNI9Q3OR/GRh5tbHaNExMpJDeejMkaADbo8Tf+gViWwKg08L2uxrxipmpr86IkT99UY/sVAmev+ZpCUYGmOdJLEtK7KilLl/GzXc/Bbw0qxf/b+W1yo/lC4RjSPtXUhM3/s5mMEoS1acudnnqDCXSqTviCyt4fJUaZSSVYP8onjzP1ycQIDAQAB';
+
+describe user kafka_connector_user_1;
