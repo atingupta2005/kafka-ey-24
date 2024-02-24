@@ -9,6 +9,11 @@ choco install git -y
 ```
 
 ```
+exit
+```
+
+
+```
 git clone https://github.com/atingupta2005/kafka-ey-24
 ```
 
