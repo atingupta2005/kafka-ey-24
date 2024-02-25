@@ -10,6 +10,7 @@ docker compose up -d
 
 ## dummy translation / sentiment analysis
 ```sh
+sleep 30
 cd crypto-sentiment/
 chmod a+x ./gradlew
 ./gradlew run --info
