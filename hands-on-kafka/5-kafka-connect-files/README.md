@@ -24,7 +24,11 @@ value.converter=org.apache.kafka.connect.storage.StringConverter
 cd
 rm FILES_connect-synk.properties
 wget --no-check-certificate --no-cache --no-cookies https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/hands-on-kafka/5-kafka-connect-files/FILES_connect-synk.properties
-nano FILES_connect-synk.properties
+cat FILES_connect-synk.properties
+#nano FILES_connect-synk.properties
+```
+
+```
 cp FILES_connect-synk.properties /usr/local/kafka/config/
 cat /usr/local/kafka/config/FILES_connect-synk.properties
 ```
