@@ -30,7 +30,7 @@ class CryptoTopology {
   }
 
   /**
-   * This is the first version of the topology that is build at the beginning of Chapter 3. If you
+   * This is the first version of the topology. If you
    * want to run this, change the following line in App.java:
    *
    * <p>Original: Topology topology = CryptoTopology.build();
