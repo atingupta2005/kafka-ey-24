@@ -6,7 +6,7 @@ cat /usr/local/kafka/config/connect-standalone.properties
 ```
 
 ```
-/usr/local/kafka/config/connect-standalone.properties
+nano /usr/local/kafka/config/connect-standalone.properties
 ```
 
 ```
