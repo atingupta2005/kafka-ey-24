@@ -1,12 +1,19 @@
 # Running Locally
 ```sh
-docker-compose up -d
+rm -rf ~/kafka-ey-24
+cd
+git clone https://github.com/atingupta2005/kafka-ey-24/
+cd ~/kafka-ey-24/hands-on-kafka/6-kafka-streaming/02
+docker compose down
+docker compose up -d
 ```
 
 ## dummy translation / sentiment analysis
 First, if you want to see this running without setting up a service account for the translation and sentiment analysis service, you can run the following command:
 
 ```sh
+cd crypto-sentiment/
+chmod a+x ./gradlew
 ./gradlew run --info
 ```
 
@@ -14,7 +21,8 @@ First, if you want to see this running without setting up a service account for 
 We have a couple of test records saved to the `data/test.json` file, which is mounted in the `kafka` container for convenience. Feel free to modify the data in this file as you see fit. Then, run the following command to produce the test data to the source topic (`tweets`).
 
 ```sh
-docker-compose exec kafka bash
+cd ~/kafka-ey-24/hands-on-kafka/6-kafka-streaming/02
+docker compose exec kafka bash
 
 kafka-console-producer \
   --bootstrap-server kafka:9092 \
@@ -23,9 +31,9 @@ kafka-console-producer \
 
 Then, in another tab, run the following command to consume data from the sink topic (`crypto-sentiment`).
 ```sh
-docker-compose exec schema-registry bash
+docker compose exec schema-registry bash
 
-$ kafka-avro-console-consumer \
+kafka-avro-console-consumer \
  --bootstrap-server kafka:9092 \
  --topic crypto-sentiment \
  --from-beginning
@@ -38,6 +46,8 @@ $ kafka-avro-console-consumer \
 ```
 
 ## Cleanup
+- Make sure that you are out of the container
 ```
-docker-compose down
+cd ~/kafka-ey-24/hands-on-kafka/6-kafka-streaming/02
+docker compose down
 ```

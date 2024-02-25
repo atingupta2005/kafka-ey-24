@@ -1,11 +1,18 @@
 # Video game leader board
 ```sh
-docker-compose up -d
+rm -rf ~/kafka-ey-24
+cd
+git clone https://github.com/atingupta2005/kafka-ey-24/
+cd ~/kafka-ey-24/hands-on-kafka/6-kafka-streaming/03
+docker compose down
+docker compose up -d
 ```
 
 Now, to run the Kafka Streams application, simply run:
 
 ```
+cd video-game-leaderboard/
+chmod a+x ./gradlew
 ./gradlew run --info
 ```
 
@@ -14,7 +21,8 @@ Once your application is running, you can produce some test data to see it in ac
 
 ```sh
 # log into the broker, which is where the kafka console scripts live
-docker-compose exec kafka bash
+cd ~/kafka-ey-24/hands-on-kafka/6-kafka-streaming/03
+docker compose exec kafka bash
 
 # produce test data to players topic
 kafka-console-producer \
@@ -42,8 +50,9 @@ This application exposes the video game leaderboard results using Kafka Streams 
 [jq]: https://stedolan.github.io/jq/download/
 
 ### Get all leaderboard entries, grouped by game (i.e. _productId_)
-
+- Make sure that you are out of the container
 ```sh
+sudo apt install jq -y
 curl -s localhost:7000/leaderboard | jq '.'
 
 # example output (truncated)
@@ -99,4 +108,12 @@ curl -s localhost:7000/leaderboard/1 | jq '.'
     "score": 1000
   }
 ]
+```
+
+
+## Cleanup
+- Make sure that you are out of the container
+```
+cd ~/kafka-ey-24/hands-on-kafka/6-kafka-streaming/03
+docker compose down
 ```
