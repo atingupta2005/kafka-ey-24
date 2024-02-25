@@ -24,19 +24,9 @@ docker compose exec kafka bash
 ```
 
 ```sh
-echo {"created_at":1577933872630,"id":10005,"entity":"ethereum","text":"Bitcoin is worst currency. Never go with it #ethereum","sentiment_score":0.5865814201024537,"sentiment_magnitude":0.6549783621893905,"salience":0.8443088386618622} > test2.json
-```
-
-```sh
 kafka-console-producer \
   --bootstrap-server kafka:9092 \
   --topic tweets < test.json
-```
-
-```sh
-kafka-console-producer \
-  --bootstrap-server kafka:9092 \
-  --topic tweets < test2.json
 ```
 
 Then, in another tab, run the following command to consume data from the sink topic (`crypto-sentiment`).
