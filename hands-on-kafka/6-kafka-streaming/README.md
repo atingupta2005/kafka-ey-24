@@ -6,11 +6,6 @@ java -version
 sudo apt-get install openjdk-11-jdk
 ```
 
-
-```
-update-java-alternatives --list
-```
-
 ```
 update-java-alternatives --list
 ```
