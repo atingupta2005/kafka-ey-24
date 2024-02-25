@@ -29,6 +29,12 @@ kafka-console-producer \
   --topic tweets < test.json
 ```
 
+```sh
+kafka-console-producer \
+  --bootstrap-server kafka:9092 \
+  --topic tweets < test2.json
+```
+
 Then, in another tab, run the following command to consume data from the sink topic (`crypto-sentiment`).
 ```sh
 cd ~/kafka-ey-24/hands-on-kafka/6-kafka-streaming/02
