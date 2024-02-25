@@ -40,11 +40,13 @@ cat /usr/local/kafka/config/FILES_connect-synk.properties
 
 
 ## Publish data to the topic
+- Note: Need to open another terminal to run command below
 ```
 /usr/local/kafka/bin/kafka-console-producer.sh --broker-list kafka1:19092 --topic my_file_connect_topic_1
 ```
 
 ## Check the text file
+- Note: Need to open another terminal to run command below
 ```
 tail -ff  /tmp/my-file-sink.txt
 ```
