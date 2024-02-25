@@ -8,7 +8,7 @@ docker compose down
 docker compose up -d
 ```
 
-Now, follow either the **DSL example** or **Processor API example** instructions below, depending on which version of the demo you want to run.
+Now, follow the **DSL example** instructions below.
 
 ## DSL example
 
@@ -61,5 +61,6 @@ or slightly different output if running the Processor API example:
 ## Cleanup
 - Make sure that you are out of the container
 ```
+cd ~/kafka-ey-24/hands-on-kafka/6-kafka-streaming/01
 docker compose down
 ```

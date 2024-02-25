@@ -9,8 +9,6 @@ docker compose up -d
 ```
 
 ## dummy translation / sentiment analysis
-First, if you want to see this running without setting up a service account for the translation and sentiment analysis service, you can run the following command:
-
 ```sh
 cd crypto-sentiment/
 chmod a+x ./gradlew
