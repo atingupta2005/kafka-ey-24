@@ -8,7 +8,7 @@ sudo apt-get install openjdk-11-jdk
 
 
 ```
-update-java-alternatives --listsudo apt-get install openjdk-11-jdk
+update-java-alternatives --list
 ```
 
 ```
