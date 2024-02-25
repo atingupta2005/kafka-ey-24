@@ -29,6 +29,7 @@ kafka-console-producer \
 
 Then, in another tab, run the following command to consume data from the sink topic (`crypto-sentiment`).
 ```sh
+cd ~/kafka-ey-24/hands-on-kafka/6-kafka-streaming/02
 docker compose exec schema-registry bash
 
 kafka-avro-console-consumer \
