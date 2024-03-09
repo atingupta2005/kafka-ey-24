@@ -18,7 +18,7 @@ git clone https://github.com/atingupta2005/kafka-stack-docker-compose
 cd kafka-stack-docker-compose
 
 
-docker compose -f full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml up -d
+sudo docker compose -f full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml up -d
 
 curl localhost:8080
 
