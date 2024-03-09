@@ -37,7 +37,10 @@ nc -vz 172.210.162.152 9092
 cat /usr/local/kafka/logs/kafkaServer.out | grep 172.210
 
 tail -f /usr/local/kafka/logs/zookeeper.out
+# Press CTRL+C to exit
+
 tail -f /usr/local/kafka/logs/kafkaServer.out
+# Press CTRL+C to exit
 
 nc -vz localhost 2181
 nc -vz localhost 9092
