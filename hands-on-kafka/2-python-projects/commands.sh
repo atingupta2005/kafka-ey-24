@@ -20,6 +20,7 @@ cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/1-python-kafka-admin-api-simpl
 pip install -r requirements.txt
 
 uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+sleep 2
 curl localhost:85$USER_SUFFIX/hello-world
 pkill uvicorn
 ##----------------------------------------------------------------##
@@ -28,6 +29,7 @@ cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/2-python-kafka-admin-api-adv
 pip install -r requirements.txt
 
 uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+sleep 2
 curl localhost:85$USER_SUFFIX/hello-world
 pkill uvicorn
 ##----------------------------------------------------------------##
@@ -54,6 +56,7 @@ cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/10-peopleconsumeradv
 pip install -r requirements.txt
 
 python pyconsumer.py &
+sleep 2
 http POST :85$USER_SUFFIX/api/people count:=1
 pkill uvicorn
 pkill pyconsumer
@@ -72,6 +75,7 @@ cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/16-avro-people-service-consume
 pip install -r requirements.txt
 
 python pyconsumer.py &
+sleep 2
 http POST :85$USER_SUFFIX/api/people count:=1
 pkill uvicorn
 pkill pyconsumer
