@@ -11,11 +11,12 @@ chmod +x ~/.docker/cli-plugins/docker-compose
 
 docker compose version
 
+cd ~
 
 git clone https://github.com/atingupta2005/kafka-stack-docker-compose
 
 
-cd kafka-stack-docker-compose
+cd ~/kafka-stack-docker-compose
 
 
 sudo docker compose -f full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml up -d
