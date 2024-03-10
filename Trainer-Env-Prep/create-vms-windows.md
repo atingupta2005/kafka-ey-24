@@ -1,12 +1,9 @@
 subscriptions="ey-kafka-1,ey-kafka-2,ey-kafka-3"
-subscriptions="ey-trng-1,ey-trng-2,ey-trng-2-new"
-
 
 readarray -d "," -t all_subscriptions <<< "$subscriptions"
 
 az account show
-locations="eastus,eastus2,centralus,northeurope,japaneast,uksouth,southcentralus,australiaeast,koreacentral"
-locations="southcentralus,australiaeast,koreacentral"
+locations="eastus2,northeurope,japaneast,uksouth,southcentralus,australiaeast,koreacentral"
 
 readarray -d "," -t all_locations <<< "$locations"
 

@@ -2,7 +2,9 @@ sudo rm -rf ~/kafka-ey-24
 cd ~
 git clone https://github.com/atingupta2005/kafka-ey-24
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects
-sudo chmod a+rwx /pyenv
+sudo  apt install python3.8-venv
+#sudo python3 -m venv /pyenv
+sudo chmod -R a+rwx /pyenv
 deactivate
 source /pyenv/bin/activate
 nc -vz localhost 2181
