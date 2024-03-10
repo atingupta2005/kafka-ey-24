@@ -18,7 +18,7 @@ echo $USER_SUFFIX
 # Create Topic
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/1-python-kafka-admin-api-simple
 pip install -r requirements.txt
-uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 curl localhost:85$USER_SUFFIX/hello-world
 pkill uvicorn
@@ -27,7 +27,7 @@ pkill uvicorn
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/2-python-kafka-admin-api-adv
 pip install -r requirements.txt
 
-uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 curl localhost:85$USER_SUFFIX/hello-world
 pkill uvicorn
@@ -36,7 +36,7 @@ pkill uvicorn
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/5-peopleservice-basic-producer
 pip install -r requirements.txt
 
-uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 http POST :85$USER_SUFFIX/api/people count:=5
 pkill uvicorn
@@ -45,7 +45,7 @@ pkill uvicorn
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/8-peopleservice-producer-python-adv
 pip install -r requirements.txt
 
-uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 http POST :85$USER_SUFFIX/api/people count:=5
 tail output.log
@@ -65,7 +65,7 @@ pkill -f " pyconsumer.py"
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/15-avro-people-service-producer
 pip install -r requirements.txt
 
-uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 http POST :85$USER_SUFFIX/api/people count:=5
 ##----------------------------------------------------------------##
@@ -84,7 +84,7 @@ pkill -f " pyconsumer.py"
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/17-avro-people-service-schema-evolution
 pip install -r requirements.txt
 
-uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 http POST :85$USER_SUFFIX/api/people count:=1
 python pyconsumer.py &
