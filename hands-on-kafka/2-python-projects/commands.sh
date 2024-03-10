@@ -11,14 +11,14 @@ nc -vz localhost 2181
 nc -vz localhost 9092
 sudo apt install httpie  -y
 
-USER_SUFFIX=$(echo "$USER" | cut -c 2-5)
+USER_SUFFIX=$(echo "$USER" | cut -c 2-2)
+USER_SUFFIX=$(echo 1$USER_SUFFIX)
 echo $USER_SUFFIX
 
 ##----------------------------------------------------------------##
 # Create Topic
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/1-python-kafka-admin-api-simple
 pip install -r requirements.txt
-
 uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 curl localhost:85$USER_SUFFIX/hello-world
