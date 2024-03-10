@@ -11,8 +11,7 @@ nc -vz localhost 2181
 nc -vz localhost 9092
 sudo apt install httpie  -y
 
-USER_SUFFIX=$(echo "$USER" | cut -c 2-2)
-USER_SUFFIX=$(echo 1$USER_SUFFIX)
+USER_SUFFIX=$(echo "$USER" | cut -c 2-5)
 echo $USER_SUFFIX
 
 ##----------------------------------------------------------------##
