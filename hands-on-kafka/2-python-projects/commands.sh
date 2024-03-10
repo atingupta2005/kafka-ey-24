@@ -21,7 +21,8 @@ pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 curl localhost:103$USER_SUFFIX/hello-world
-pkill uvicorn
+ps -x | grep 103$USER_SUFFIX
+kill -9 
 ##----------------------------------------------------------------##
 # Create Topic with 'retention.ms': '360000'
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/2-python-kafka-admin-api-adv
@@ -30,7 +31,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 curl localhost:103$USER_SUFFIX/hello-world
-pkill uvicorn
+sudo pkill uvicorn
 ##----------------------------------------------------------------##
 # Create message when we call api using POST - /api/people
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/5-peopleservice-basic-producer
@@ -39,7 +40,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 http POST :103$USER_SUFFIX/api/people count:=5
-pkill uvicorn
+sudo pkill uvicorn
 ##----------------------------------------------------------------##
 # Create message when we call api using POST - /api/people with callbacks
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/8-peopleservice-producer-python-adv
@@ -57,7 +58,7 @@ pip install -r requirements.txt
 python pyconsumer.py &
 sleep 2
 http POST :103$USER_SUFFIX/api/people count:=1
-pkill uvicorn
+sudo pkill uvicorn
 pkill pyconsumer
 pkill -f " pyconsumer.py"
 ##----------------------------------------------------------------##
@@ -76,7 +77,7 @@ pip install -r requirements.txt
 python pyconsumer.py &
 sleep 2
 http POST :103$USER_SUFFIX/api/people count:=1
-pkill uvicorn
+sudo pkill uvicorn
 pkill pyconsumer
 pkill -f " pyconsumer.py"
 ##----------------------------------------------------------------##
@@ -89,6 +90,6 @@ sleep 2
 http POST :103$USER_SUFFIX/api/people count:=1
 python pyconsumer.py &
 http POST :103$USER_SUFFIX/api/people count:=1
-pkill uvicorn
+sudo pkill uvicorn
 pkill -f " pyconsumer.py"
 ##----------------------------------------------------------------##
