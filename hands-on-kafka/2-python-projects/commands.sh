@@ -20,7 +20,7 @@ cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/1-python-kafka-admin-api-simpl
 pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
-curl localhost:85$USER_SUFFIX/hello-world
+curl localhost:103$USER_SUFFIX/hello-world
 pkill uvicorn
 ##----------------------------------------------------------------##
 # Create Topic with 'retention.ms': '360000'
@@ -29,7 +29,7 @@ pip install -r requirements.txt
 
 uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
-curl localhost:85$USER_SUFFIX/hello-world
+curl localhost:103$USER_SUFFIX/hello-world
 pkill uvicorn
 ##----------------------------------------------------------------##
 # Create message when we call api using POST - /api/people
@@ -38,7 +38,7 @@ pip install -r requirements.txt
 
 uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
-http POST :85$USER_SUFFIX/api/people count:=5
+http POST :103$USER_SUFFIX/api/people count:=5
 pkill uvicorn
 ##----------------------------------------------------------------##
 # Create message when we call api using POST - /api/people with callbacks
@@ -47,7 +47,7 @@ pip install -r requirements.txt
 
 uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
-http POST :85$USER_SUFFIX/api/people count:=5
+http POST :103$USER_SUFFIX/api/people count:=5
 tail output.log
 ##----------------------------------------------------------------##
 # Kafka consumer
@@ -56,7 +56,7 @@ pip install -r requirements.txt
 
 python pyconsumer.py &
 sleep 2
-http POST :85$USER_SUFFIX/api/people count:=1
+http POST :103$USER_SUFFIX/api/people count:=1
 pkill uvicorn
 pkill pyconsumer
 pkill -f " pyconsumer.py"
@@ -67,7 +67,7 @@ pip install -r requirements.txt
 
 uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
-http POST :85$USER_SUFFIX/api/people count:=5
+http POST :103$USER_SUFFIX/api/people count:=5
 ##----------------------------------------------------------------##
 # Kafka consumer with AVRO de-serialization
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/16-avro-people-service-consumer
@@ -75,7 +75,7 @@ pip install -r requirements.txt
 
 python pyconsumer.py &
 sleep 2
-http POST :85$USER_SUFFIX/api/people count:=1
+http POST :103$USER_SUFFIX/api/people count:=1
 pkill uvicorn
 pkill pyconsumer
 pkill -f " pyconsumer.py"
@@ -86,9 +86,9 @@ pip install -r requirements.txt
 
 uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
-http POST :85$USER_SUFFIX/api/people count:=1
+http POST :103$USER_SUFFIX/api/people count:=1
 python pyconsumer.py &
-http POST :85$USER_SUFFIX/api/people count:=1
+http POST :103$USER_SUFFIX/api/people count:=1
 pkill uvicorn
 pkill -f " pyconsumer.py"
 ##----------------------------------------------------------------##
