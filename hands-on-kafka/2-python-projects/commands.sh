@@ -19,32 +19,32 @@ echo $USER_SUFFIX
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/1-python-kafka-admin-api-simple
 pip install -r requirements.txt
 
-sudo uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
 curl localhost:85$USER_SUFFIX/hello-world
-sudo pkill uvicorn
+pkill uvicorn
 ##----------------------------------------------------------------##
 # Create Topic with 'retention.ms': '360000'
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/2-python-kafka-admin-api-adv
 pip install -r requirements.txt
 
-sudo uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
 curl localhost:85$USER_SUFFIX/hello-world
-sudo pkill uvicorn
+pkill uvicorn
 ##----------------------------------------------------------------##
 # Create message when we call api using POST - /api/people
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/5-peopleservice-basic-producer
 pip install -r requirements.txt
 
-sudo uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 http POST :85$USER_SUFFIX/api/people count:=5
-sudo pkill uvicorn
+pkill uvicorn
 ##----------------------------------------------------------------##
 # Create message when we call api using POST - /api/people with callbacks
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/8-peopleservice-producer-python-adv
 pip install -r requirements.txt
 
-sudo uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 http POST :85$USER_SUFFIX/api/people count:=5
 tail output.log
@@ -55,7 +55,7 @@ pip install -r requirements.txt
 
 python pyconsumer.py &
 http POST :85$USER_SUFFIX/api/people count:=1
-sudo pkill uvicorn
+pkill uvicorn
 pkill pyconsumer
 pkill -f " pyconsumer.py"
 ##----------------------------------------------------------------##
@@ -63,7 +63,7 @@ pkill -f " pyconsumer.py"
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/15-avro-people-service-producer
 pip install -r requirements.txt
 
-sudo uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 http POST :85$USER_SUFFIX/api/people count:=5
 ##----------------------------------------------------------------##
@@ -73,7 +73,7 @@ pip install -r requirements.txt
 
 python pyconsumer.py &
 http POST :85$USER_SUFFIX/api/people count:=1
-sudo pkill uvicorn
+pkill uvicorn
 pkill pyconsumer
 pkill -f " pyconsumer.py"
 ##----------------------------------------------------------------##
@@ -81,11 +81,11 @@ pkill -f " pyconsumer.py"
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/17-avro-people-service-schema-evolution
 pip install -r requirements.txt
 
-sudo uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
+uvicorn main:app --reload --host 0.0.0.0 --port 85$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 http POST :85$USER_SUFFIX/api/people count:=1
 python pyconsumer.py &
 http POST :85$USER_SUFFIX/api/people count:=1
-sudo pkill uvicorn
+pkill uvicorn
 pkill -f " pyconsumer.py"
 ##----------------------------------------------------------------##
