@@ -11,16 +11,13 @@ chmod +x ~/.docker/cli-plugins/docker-compose
 
 docker compose version
 
-cd ~
 
 git clone https://github.com/atingupta2005/kafka-stack-docker-compose
 
 
-cd ~/kafka-stack-docker-compose
-VM_PUBLIC_IP="52.170.103.92"
-cat full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml  | grep EXTERNAL
-sed -i /52.170.103.92/$VM_PUBLIC_IP/' full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml
-cat full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml  | grep EXTERNAL
+cd kafka-stack-docker-compose
+
+
 sudo docker compose -f full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml up -d
 
 curl localhost:8080
