@@ -89,7 +89,7 @@ uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&
 sleep 2
 http POST :103$USER_SUFFIX/api/people count:=1
 python pyconsumer.py &
-http POST :103$USER_SUFFIX/api/people count:=1
+http POST :103$USER_SUFFIX/api/people count:=10
 sudo pkill uvicorn
 pkill -f " pyconsumer.py"
 ##----------------------------------------------------------------##

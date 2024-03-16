@@ -15,7 +15,7 @@ sudo mv kafka_2.13-3.6.1 /usr/local/kafka
 
 ip addr
 
-echo "advertised.listeners=PLAINTEXT://172.210.162.152:9092" >> /usr/local/kafka/config/server.properties
+echo "advertised.listeners=PLAINTEXT://52.170.103.92:9092" >> /usr/local/kafka/config/server.properties
 
 cat /usr/local/kafka/config/server.properties
 
@@ -31,7 +31,7 @@ sleep 2
 
 nc -vz localhost 9092
 
-nc -vz 172.210.162.152 9092
+nc -vz 52.170.103.92 9092
 
 
 cat /usr/local/kafka/logs/kafkaServer.out | grep 172.210
@@ -45,9 +45,13 @@ tail -f /usr/local/kafka/logs/kafkaServer.out
 nc -vz localhost 2181
 nc -vz localhost 9092
 
-/usr/local/kafka/bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server 172.210.162.152:9092
+nc -vz 52.170.103.92 2181
+nc -vz 52.170.103.92 9092
 
-/usr/local/kafka/bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server 172.210.162.152:9092
+
+/usr/local/kafka/bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server 52.170.103.92:9092
+
+/usr/local/kafka/bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server 52.170.103.92:9092
 
 /usr/local/kafka/bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
 
