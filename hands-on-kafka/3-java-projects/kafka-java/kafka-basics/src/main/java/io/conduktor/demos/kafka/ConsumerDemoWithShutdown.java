@@ -25,8 +25,8 @@ public class ConsumerDemoWithShutdown {
         // create Producer Properties
         Properties properties = new Properties();
 
-        // connect to 13.94.96.208
-        properties.setProperty("bootstrap.servers", "13.94.96.208:9092");
+        // connect to 52.170.103.92
+        properties.setProperty("bootstrap.servers", "52.170.103.92:9092");
 
 
         // create consumer configs

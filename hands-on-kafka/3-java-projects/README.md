@@ -20,3 +20,6 @@ git clone https://github.com/atingupta2005/kafka-ey-24
 ```
 exit
 ```
+
+## Open folder in IDE:
+ - kafka-ey-24\hands-on-kafka\3-java-projects\kafka-java
