@@ -8,7 +8,7 @@ locations="eastus2,northeurope,japaneast,uksouth,southcentralus,australiaeast,ko
 readarray -d "," -t all_locations <<< "$locations"
 
 username="atingupta2005"
-password="Azure@123456" # Replace with your desired password
+password="EyKafka@4536" # Replace with your desired password
 vm_size="Standard_B4ms"
 image="Win2022Datacenter"
 

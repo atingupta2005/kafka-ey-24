@@ -21,8 +21,8 @@ pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 103$USER_SUFFIX > output.log 2>&1 &
 sleep 2
 curl localhost:103$USER_SUFFIX/hello-world
-ps -x | grep 103$USER_SUFFIX
-kill -9 
+mypsid=$(ps -x | grep "'--port 103$USER_SUFFIX'" | awk '{print $1}')
+kill -9 $mypsid
 ##----------------------------------------------------------------##
 # Create Topic with 'retention.ms': '360000'
 cd ~/kafka-ey-24/hands-on-kafka/2-python-projects/2-python-kafka-admin-api-adv

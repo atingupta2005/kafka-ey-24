@@ -15,11 +15,19 @@ cd ~
 
 git clone https://github.com/atingupta2005/kafka-stack-docker-compose
 
+# Replcae with public ip of your VM where kafka is being installed. Local VM as of now
+VM_PUB_IP="52.170.103.92"
 
 cd ~/kafka-stack-docker-compose
 
+cat full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml | grep EXTERNAL
 
-sudo docker compose -f full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml up -d
+sed -i "s/52.170.103.92/$VM_PUB_IP/g" full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml
+
+cat full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml | grep EXTERNAL
+
+docker compose -f full-stack-zk-multiple-kafka-multiple-full-stack-ag.yml up -d
+
 
 curl localhost:8080
 
