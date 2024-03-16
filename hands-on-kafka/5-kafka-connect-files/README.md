@@ -16,7 +16,7 @@ value.converter=org.apache.kafka.connect.storage.StringConverter
 
 
 ```
-/usr/local/kafka/bin/kafka-topics.sh --bootstrap-server kafka1:19092 --create --topic my_file_connect_topic_1 --replication-factor 3 --partitions 3
+/usr/local/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic my_file_connect_topic_1 --replication-factor 3 --partitions 3
 ```
 
 ## Create a FILES_connect-synk.properties file with below properties in config folder
@@ -42,7 +42,7 @@ cat /usr/local/kafka/config/FILES_connect-synk.properties
 ## Publish data to the topic
 - Note: Need to open another terminal to run command below
 ```
-/usr/local/kafka/bin/kafka-console-producer.sh --broker-list kafka1:19092 --topic my_file_connect_topic_1
+/usr/local/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic my_file_connect_topic_1
 ```
 
 ## Check the text file
