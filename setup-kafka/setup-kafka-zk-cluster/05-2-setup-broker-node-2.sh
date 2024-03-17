@@ -10,6 +10,7 @@ wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/setup-kafk
 cp server-2.properties /usr/local/kafka/config/server.properties
 
 cat /usr/local/kafka/config/server.properties
+nano /usr/local/kafka/config/server.properties
 
 /usr/local/kafka/bin/kafka-server-start.sh  -daemon /usr/local/kafka/config/server.properties
 
