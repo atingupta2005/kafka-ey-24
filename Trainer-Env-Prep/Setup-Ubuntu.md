@@ -13,8 +13,8 @@ sudo apt -y update
 sudo apt-get -y install r-base
 sudo apt -y update
 sudo apt-get  -y install gdebi-core
-wget -c https://s3.amazonaws.com/rstudio-ide-build/server/jammy/amd64/rstudio-server-2022.07.2-576-amd64.deb
-sudo gdebi rstudio-server-2022.07.2-576-amd64.deb
+wget https://download2.rstudio.org/server/focal/amd64/rstudio-server-2023.12.1-402-amd64.deb
+sudo gdebi rstudio-server-2023.12.1-402-amd64.deb
 
 free -h
 curl http://localhost:8787
