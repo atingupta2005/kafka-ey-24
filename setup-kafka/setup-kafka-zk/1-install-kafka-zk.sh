@@ -7,7 +7,7 @@ sudo rm -rf /usr/local/kafka/logs/zookeeper.out
 
 sudo apt-get -y install openjdk-11-jdk
 
-wget -nc https://downloads.apache.org/kafka/3.6.1/kafka_2.13-3.6.1.tgz
+wget -nc https://archive.apache.org/dist/kafka/3.6.1/kafka_2.13-3.6.1.tgz
 tar -zxvf kafka_2.13-3.6.1.tgz
 sudo rm -rf /usr/local/kafka
 ls -al
