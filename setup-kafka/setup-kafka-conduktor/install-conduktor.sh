@@ -16,7 +16,7 @@ cd ~
 git clone https://github.com/atingupta2005/kafka-stack-docker-compose
 
 # Replcae with public ip of your VM where kafka is being installed. Local VM as of now
-VM_PUB_IP="13.75.154.112"
+VM_PUB_IP="52.171.63.91"
 
 cd ~/kafka-stack-docker-compose
 

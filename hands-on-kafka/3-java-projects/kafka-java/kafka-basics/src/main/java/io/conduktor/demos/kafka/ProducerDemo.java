@@ -18,8 +18,8 @@ public class ProducerDemo {
         // create Producer Properties
         Properties properties = new Properties();
 
-        // connect to 13.75.154.112
-        properties.setProperty("bootstrap.servers", "13.75.154.112:9092");
+        // connect to 52.171.63.91
+        properties.setProperty("bootstrap.servers", "52.171.63.91:9092");
 
         // set producer properties
         properties.setProperty("key.serializer", StringSerializer.class.getName());
