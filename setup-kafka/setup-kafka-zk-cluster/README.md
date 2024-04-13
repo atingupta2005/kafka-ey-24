@@ -6,9 +6,9 @@
 
 ## Assumption:
  - 3 VMs with below private IPs:
-   - 10.0.0.4
-   - 10.0.0.5
-   - 10.0.0.6
+   - 10.7.0.4
+   - 10.7.0.5
+   - 10.7.0.6
   
  - Login ID to connect to each VM is atingupta2005
  
