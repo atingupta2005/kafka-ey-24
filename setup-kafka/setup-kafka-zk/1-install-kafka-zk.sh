@@ -3,6 +3,8 @@ sleep 1
 /usr/local/kafka/bin/zookeeper-server-stop.sh /usr/local/kafka/config/zookeeper.properties
 sleep 1
 
+sudo apt-get install -y netcat tree zip unzip git
+
 sudo rm -rf /usr/local/kafka/logs/zookeeper.out
 
 sudo apt-get -y install openjdk-11-jdk
