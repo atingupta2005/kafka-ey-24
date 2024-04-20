@@ -11,7 +11,7 @@ wget -nc https://downloads.apache.org/kafka/3.7.0/kafka_2.13-3.7.0.tgz
 tar -zxvf kafka_2.13-3.7.0.tgz
 sudo rm -rf /usr/local/kafka
 ls -al
-sudo mv kafka_2.13-3.7.0.tgz /usr/local/kafka
+sudo mv kafka_2.13-3.7.0 /usr/local/kafka
 
 ip addr
 
