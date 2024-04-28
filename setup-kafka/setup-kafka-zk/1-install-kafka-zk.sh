@@ -36,8 +36,8 @@ nc -vz localhost 9092
 # Replace with the public ip of currect machine
 nc -vz 52.171.63.91 9092
 
-
-cat /usr/local/kafka/logs/kafkaServer.out | grep 172.210
+# Change IP address with the public ip of currect machine
+cat /usr/local/kafka/logs/kafkaServer.out | grep 52.171.63.91
 
 tail -f /usr/local/kafka/logs/zookeeper.out
 # Press CTRL+C to exit
@@ -48,12 +48,14 @@ tail -f /usr/local/kafka/logs/kafkaServer.out
 nc -vz localhost 2181
 nc -vz localhost 9092
 
+# Change IP address with the public ip of currect machine
 nc -vz 52.171.63.91 2181
 nc -vz 52.171.63.91 9092
 
-
+# Change IP address with the public ip of currect machine
 /usr/local/kafka/bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server 52.171.63.91:9092
 
+# Change IP address with the public ip of currect machine
 /usr/local/kafka/bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server 52.171.63.91:9092
 
 /usr/local/kafka/bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
