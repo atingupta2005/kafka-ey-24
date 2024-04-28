@@ -18,6 +18,7 @@ sudo mv kafka_2.13-3.7.0 /usr/local/kafka
 
 ip addr
 
+# Change IP address in below line
 echo "advertised.listeners=PLAINTEXT://52.171.63.91:9092" >> /usr/local/kafka/config/server.properties
 
 cat /usr/local/kafka/config/server.properties
