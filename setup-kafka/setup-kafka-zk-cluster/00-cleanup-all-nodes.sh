@@ -12,7 +12,7 @@ sudo rm -rf /data
 sudo rm -rf /usr/local/kafka
 sudo rm -rf /usr/local/kafka/logs/zookeeper.out
 
-sudo perl -pi -e "s,^10.7.0...*kafka.\n$,," /etc/hosts
-sudo perl -pi -e "s,^10.7.0...*zookeeper.\n$,," /etc/hosts
+sudo perl -pi -e "s,^10.0.0...*kafka.\n$,," /etc/hosts
+sudo perl -pi -e "s,^10.0.0...*zookeeper.\n$,," /etc/hosts
 cat /etc/hosts
 
