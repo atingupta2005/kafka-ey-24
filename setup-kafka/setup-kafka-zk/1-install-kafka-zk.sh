@@ -33,6 +33,7 @@ sleep 2
 
 nc -vz localhost 9092
 
+# Replace with the public ip of currect machine
 nc -vz 52.171.63.91 9092
 
 
