@@ -20,6 +20,7 @@ ip addr
 echo "advertised.listeners=PLAINTEXT://52.171.63.91:9092" >> /usr/local/kafka/config/server.properties
 
 cat /usr/local/kafka/config/server.properties
+nano /usr/local/kafka/config/server.properties
 
 /usr/local/kafka/bin/zookeeper-server-start.sh -daemon /usr/local/kafka/config/zookeeper.properties
 
