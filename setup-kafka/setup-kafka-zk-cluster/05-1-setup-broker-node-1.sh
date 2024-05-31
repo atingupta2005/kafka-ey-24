@@ -7,6 +7,10 @@ rm -rf server-*.properties*
 wget https://raw.githubusercontent.com/atingupta2005/kafka-ey-24/main/setup-kafka/setup-kafka-zk-cluster/server-1.properties
 
 cp server-1.properties /usr/local/kafka/config/server.properties
+
+VM_PUB_IP="-current-ip-"
+sed -i "s/52.171.55.4/$VM_PUB_IP/g" /usr/local/kafka/config/server.properties
+
 cat /usr/local/kafka/config/server.properties
 
 /usr/local/kafka/bin/kafka-server-start.sh  -daemon /usr/local/kafka/config/server.properties
